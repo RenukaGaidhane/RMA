@@ -25,4 +25,4 @@ switch to user
 sbatch scriptname
 
 
-
+sudo hostnamectl set-hostname hpcsa
