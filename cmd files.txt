@@ -1,0 +1,28 @@
+ACCOUNT/USER/QOS
+
+ADD ACCOUNT:
+sacctmgr create account name=dhpcsa
+
+Add USER:
+sacctmgr add user dhpcsa defaultaccount=dhpcsa adminlevel=[none]
+
+QOS:
+sacctmgr add qos zebra
+sacctmgr modify user crock set qos=zebra
+sacctmgr modify qos zebra set priority=10
+
+
+sacctmgr modify qos zebra set priority=10
+
+sacctmgr modify user dhpcsa set qos=zebra
+sacctmgr modify qos zebra set maxjob=2
+sacctmgr modify qos zebra set maxsubmitjob=2
+
+
+RESERVATION
+scontrol create reservation=name nodes=compute starttime=now partition=name user=name duration=00:00:00
+switch to user
+sbatch scriptname
+
+
+
