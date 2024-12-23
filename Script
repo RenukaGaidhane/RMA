@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=my_job          # Job name
+#SBATCH --output=output_%j.txt     # Standard output (%j = Job ID for uniqueness)
+#SBATCH --error=error_%j.txt       # Standard error (%j = Job ID for uniqueness)
+#SBATCH --ntasks=1                 # Number of tasks (1 task per node)
+#SBATCH --cpus-per-task=2          # Number of CPU cores per task
+#SBATCH --mem=4G                   # Memory per node (4GB)
+#SBATCH --time=01:00:00            # Maximum runtime (1 hour)
+#SBATCH --partition=compute        # Partition (queue) to submit to (modify as per cluster)
+
+# Print job details
+echo "Job ID: $SLURM_JOB_ID"
+echo "Allocated nodes: $SLURM_JOB_NODELIST"
+echo "Running on $SLURM_CPUS_ON_NODE CPUs with $SLURM_MEM_PER_NODE MB of memory."
+
+# Run your script
+./your_script.sh
